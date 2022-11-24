@@ -1,86 +1,62 @@
 package com.nology.cardgame;
 
+import java.io.UnsupportedEncodingException;
+
 public class Card {
 
 
+
+
+//    private char cardCode = '\1F0';
     private String suit;
+    private char suitCode;
     private String symbol;
     private int value;
 
 
     public Card(Suit suit, int value) {
-        switch (suit){
-            case HEARTS:
-                this.suit = "U+2661";
-                break;
-            case CLUBS:
-                this.suit = "U+2667 ";
-                break;
-            case DIAMONDS:
-                this.suit = "U+2662";
-                break;
-            case SPADES:
-                this.suit = "U+2664";
-                break;
-        }
+        this.suit=suit.getSuitName();
+        this.suitCode = suit.getSuitCode();
         this.value = value;
-        switch (value){
-            case 2:
-                this.symbol = "2";
-                break;
-            case 3:
-                this.symbol = "3";
-                break;
-            case 4:
-                this.symbol = "4";
-                break;
-            case 5:
-                this.symbol = "5";
-                break;
-            case 6:
-                this.symbol = "6";
-                break;
-            case 7:
-                this.symbol = "7";
-                break;
-            case 8:
-                this.symbol = "8";
-                break;
-            case 9:
-                this.symbol = "9";
-                break;
-            case 10:
-                this.symbol = "10";
-                break;
-            case 11:
-                this.symbol = "J";
-                break;
-            case 12:
-                this.symbol = "Q";
-                break;
-            case 13:
-                this.symbol = "K";
-                break;
-            case 14:
-                this.symbol = "A";
-                break;
-
+        if(value > 10){
+            switch (value){
+                case 11:
+                    this.symbol = "J";
+                    break;
+                case 12:
+                    this.symbol = "Q";
+                    break;
+                case 13:
+                    this.symbol = "K";
+                    break;
+                case 14:
+                    this.symbol = "A";
+                    break;
+            }
+        }else{
+            this.symbol = Integer.toString(value);
         }
     }
+
+    public char getSuitCode() {
+        return this.suitCode;
+    }
     public String getSuit() {
-        return suit;
+        return this.suit;
     }
 
     public String getSymbol() {
-        return symbol;
+        return this.symbol;
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     @Override
     public String toString(){
-        return (String.format("%s %f of %s", suit,value,symbol));
+
+
+        return (String.format("%c %s of %s", suitCode,symbol,suit));
     }
 }
