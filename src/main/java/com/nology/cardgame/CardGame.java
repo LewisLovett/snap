@@ -11,6 +11,12 @@ public class CardGame {
 
     public CardGame(String name){
         this.name = name;
+        generateDeck();
+    }
+    public ArrayList<Card> getCardDeck(){
+        return cardDeck;
+    }
+    public void generateDeck(){
         for (Suit suit : Suit.values()) {
             for (int i = 2; i < 15; i++) {
                 Card card = new Card(suit,i);
@@ -18,11 +24,15 @@ public class CardGame {
             }
         }
     }
-    public ArrayList<Card> getCardDeck(){
-        return cardDeck;
-    }
     public Card dealCard(){
-        return cardDeck.get(0);
+        Card card = cardDeck.get(0);
+        cardDeck.remove(0);
+        if(cardDeck.size()==0){
+            generateDeck();
+            shuffleDeck();
+            System.out.println("End of deck -- reshuffling");
+        }
+        return card;
     }
     public void sortDeckInNumberOrder(){
         ArrayList<Card> sortedDeck = cardDeck;

@@ -1,13 +1,11 @@
 package com.nology.cardgame;
 
-import java.io.UnsupportedEncodingException;
 
 public class Card {
 
 
 
 
-//    private char cardCode = '\1F0';
     private String suit;
     private char suitCode;
     private String symbol;
