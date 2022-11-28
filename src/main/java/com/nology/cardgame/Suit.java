@@ -1,10 +1,10 @@
 package com.nology.cardgame;
 
 public enum Suit {
-    SPADES("spades",'\u2664',0),
-    HEARTS("hearts",'\u2661',1),
-    DIAMONDS("diamonds",'\u2662',2),
-    CLUBS("clubs",'\u2667',3);
+    SPADES("spades",'\u2660',0),
+    HEARTS("hearts",'\u2665',1),
+    DIAMONDS("diamonds",'\u2666',2),
+    CLUBS("clubs",'\u2663',3);
 
 
     private String suitName;

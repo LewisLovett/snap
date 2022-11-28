@@ -48,14 +48,25 @@ public class Snap extends CardGame{
     }
 
     public void displayCards(){
-        System.out.println(this.card1 + " " + this.card2);
+        String output = this.card1 + " " + this.card2 + " Current player:" ;
+        if(isPlayer1Turn){
+            output+= player1.getPlayerName();
+        }else{
+            output+= player2.getPlayerName();
+        }
+        System.out.println(output);
     }
     public void gameEnd(Boolean isSnapEntered){
-        System.out.println("SNAP");
+
+        if(isSnapEntered){
+            System.out.println("SNAP");
+        }else {
+            System.out.println("You missed the SNAP");
+        }
         if((isPlayer1Turn && isSnapEntered) || (!isPlayer1Turn && !isSnapEntered)){
-            System.out.println(String.format("SNAP! %s WINS", player1.getPlayerName()));
+            System.out.println(String.format("%s WINS", player1.getPlayerName()));
         }else{
-            System.out.println(String.format("SNAP! %s WINS", player2.getPlayerName()));
+            System.out.println(String.format("%s WINS", player2.getPlayerName()));
         }
     }
 
@@ -68,8 +79,9 @@ public class Snap extends CardGame{
             }
                 card1 = card2;
                 card2 = dealCard();
-                displayCards();
                 isPlayer1Turn = !isPlayer1Turn;
+                displayCards();
+
         }
     };
 

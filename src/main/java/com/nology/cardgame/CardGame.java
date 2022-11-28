@@ -70,14 +70,6 @@ public class CardGame {
 
     public static void main(String[] args) {
         CardGame cardGame = new CardGame("52");
-        System.out.println(cardGame.getCardDeck());
-        cardGame.sortDeckInNumberOrder();
-        System.out.println(cardGame.getCardDeck());
-        cardGame.sortDeckIntoSuits();
-        System.out.println(cardGame.getCardDeck());
-        cardGame.shuffleDeck();
-        System.out.println(cardGame.getCardDeck());
-
 
     }
 }
