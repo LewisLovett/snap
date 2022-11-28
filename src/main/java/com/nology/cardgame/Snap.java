@@ -13,6 +13,8 @@ public class Snap extends CardGame{
     Card card2;
     Player player1;
     Player player2;
+
+    String input;
     public Snap(String name){
         super(name);
         this.isGameOver = false;
@@ -20,7 +22,7 @@ public class Snap extends CardGame{
     }
     public void play(){
         System.out.println("Please enter the name of player 1");
-        String input = scanner.nextLine();
+        input = scanner.nextLine();
         player1 = new Player(input);
         System.out.println("Please enter the name of player 2");
         input = scanner.nextLine();
@@ -36,9 +38,9 @@ public class Snap extends CardGame{
         while(!isGameOver){
             scanner = new Scanner(System.in);
             input = scanner.nextLine();
-            if (card1.getSymbol().equals(card2.getSymbol()) && input.equalsIgnoreCase("snap")){
+            if (card1.getSymbol().equals(card2.getSymbol())){
                 timer.cancel();
-                gameEnd();
+                gameEnd(input.equalsIgnoreCase("snap"));
             }
         }
 
@@ -48,9 +50,9 @@ public class Snap extends CardGame{
     public void displayCards(){
         System.out.println(this.card1 + " " + this.card2);
     }
-    public void gameEnd(){
+    public void gameEnd(Boolean isSnapEntered){
         System.out.println("SNAP");
-        if(isPlayer1Turn){
+        if((isPlayer1Turn && isSnapEntered) || (!isPlayer1Turn && !isSnapEntered)){
             System.out.println(String.format("SNAP! %s WINS", player1.getPlayerName()));
         }else{
             System.out.println(String.format("SNAP! %s WINS", player2.getPlayerName()));
@@ -60,6 +62,10 @@ public class Snap extends CardGame{
     TimerTask DrawCardTask = new TimerTask() {
         @Override
         public void run() {
+            if (card1.getSymbol().equals(card2.getSymbol())){
+                timer.cancel();
+                gameEnd(input.equalsIgnoreCase("snap"));
+            }
                 card1 = card2;
                 card2 = dealCard();
                 displayCards();
