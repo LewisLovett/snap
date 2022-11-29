@@ -1,11 +1,11 @@
 # snap
 Snap game by Lewis Lovett
-Classes
+- Classes
 1. Card - Class for individual cards, contains getters and setters for card properties. Contains multidimensional array contiaining UNI code for each individual card icon.
 2. CardGame - Superclass for Snap game, contains methods for initalising a deck, sorting the deck, shuffling the deck and dealing a card from the deck.
 3. Player - Simple class that stores the name of the player.
 4. Snap - Child class for CardGame, contains methods for playing snap, displaying the cards, ending the game and a TimerTask.
-Enum
+- Enum
 1. Suit - Stores information for each card suit -- Suit name string, UNI code for suit symbol and card code suit index for accessing the array of the individual card icons in the Card class
 
 PLAYING THE GAME
